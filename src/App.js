@@ -7,14 +7,14 @@ function App() {
 
   /* 1. Add API call function made with fetch */
   const fetchPokemon = () => {
-    fetch("https://pokeapi.co/api/v2/pokemon")
+    fetch("https://pokeapi.co/api/v2/pokemon?limit=807")
       .then((response) => {
         return response.json();
       })
       .then((response) => {
         console.log(response)
         /* 3. Store pokemon names from response*/
-        const names = response.results.map(result => result.name)
+        const names = response.results.map(pokemon => pokemon.name)
         /* 4. Store in useState hook */
         setPokemonNames(names)
       })
