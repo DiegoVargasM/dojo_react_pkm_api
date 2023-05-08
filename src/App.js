@@ -1,26 +1,19 @@
 import "./App.css";
 import { useState } from "react";
+import axios from "axios";
 
 function App() {
-  /* 2. Add state for pokemon names */
   const [pokemonNames, setPokemonNames] = useState([]);
 
-  /* 1. Add API call function made with fetch */
   const fetchPokemon = () => {
-    fetch("https://pokeapi.co/api/v2/pokemon?limit=807")
+    axios.get("https://pokeapi.co/api/v2/pokemon?limit=807")
       .then((response) => {
-        return response.json();
-      })
-      .then((response) => {
-        console.log(response)
-        /* 3. Store pokemon names from response*/
-        const names = response.results.map(pokemon => pokemon.name)
-        /* 4. Store in useState hook */
+        const names = response.data.results.map(pkm => pkm.name)
         setPokemonNames(names)
       })
       .catch((err) => {
-        console.log(err);
-      });
+        console.log(err)
+      })
   };
   return (
     <div className="App">
