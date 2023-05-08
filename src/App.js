@@ -24,7 +24,12 @@ function App() {
   };
   return (
     <div className="App">
-
+      <button onClick={fetchPokemon}>Fetch Pokemon</button>
+      <div>
+        {pokemonNames.map((pkmname, idx) => (
+          <p key={idx}>{pkmname}</p>
+        ))}
+      </div>
     </div>
   )
 }
