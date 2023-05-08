@@ -12,13 +12,21 @@ function App() {
         return response.json();
       })
       .then((response) => {
-        console.log(response);
+        console.log(response)
+        /* 3. Store pokemon names from response*/
+        const names = response.results.map(pkm => pkm.value)
+        /* 4. Store in useState hook */
+        setPokemonNames(names)
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+
+    </div>
+  )
 }
 
 export default App;
