@@ -14,7 +14,7 @@ function App() {
       .then((response) => {
         console.log(response)
         /* 3. Store pokemon names from response*/
-        const names = response.results.map(pkm => pkm.value)
+        const names = response.results.map(result => result.name)
         /* 4. Store in useState hook */
         setPokemonNames(names)
       })
@@ -25,11 +25,12 @@ function App() {
   return (
     <div className="App">
       <button onClick={fetchPokemon}>Fetch Pokemon</button>
-      <div>
-        {pokemonNames.map((pkmname, idx) => (
-          <p key={idx}>{pkmname}</p>
-        ))}
-      </div>
+      <ul>
+        {pokemonNames.map((name, index) => {
+          console.log(name)
+          return <li key={index}>{name}</li>
+        })}
+      </ul>
     </div>
   )
 }
